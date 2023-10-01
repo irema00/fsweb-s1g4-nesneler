@@ -35,7 +35,7 @@ function MenuElemaniOlustur(isim, fiyat, kategori) {
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
-console.log(MenuElemaniOlustur("Kahve", 12, "İçecekler"));
+console.log("Görev 1b :", MenuElemaniOlustur("Kahve", 12, "İçecekler"));
 /* Görev 2: 
 	Özel bir öğle yemeği yiyorsun! Öğretmen ve öğrencilere %25, diğer kişilere %10 indirim var. Aşağıdaki burger nesnesine, indirimi fiyatı otomatik olarak hesaplayan bir metot ekleyin.
 	
@@ -62,7 +62,7 @@ const burger = {
     } else return this.fiyat;
   },
 };
-console.log(burger.indirim("öğretmen"));
+console.log("Görev 2 :", burger.indirim("öğretmen"));
 ///////////////Değerlendirmeler (MVP)///////////////////
 
 const degerlendirmeler = [
@@ -111,7 +111,7 @@ const degerlendirmeler = [
 
 for (let i = 0; i < degerlendirmeler.length; i++) {
   if (degerlendirmeler[i].isim === "Ahmet")
-    console.log(degerlendirmeler[i].geribildirim);
+    console.log("Görev 3 :", degerlendirmeler[i].geribildirim);
 }
 
 /*  Görev 4 (ototest yok):  
@@ -126,7 +126,7 @@ for (let i = 0; i < degerlendirmeler.length; i++) {
     degerlendirmeler[i].geribildirim = reynaDegerlendirme;
   }
 }
-console.log(degerlendirmeler);
+console.log("Görev 4 :", degerlendirmeler);
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
 	
@@ -139,10 +139,18 @@ console.log(degerlendirmeler);
 */
 
 function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim) {
-  const yeniDegerlendirme = { isim, puan, geribildirim };
+  const yeniDegerlendirme = {
+    isim,
+    puan,
+    geribildirim,
+  };
   degerlendirmeler.push(yeniDegerlendirme);
   return degerlendirmeler;
 }
+console.log(
+  "Görev 5 :",
+  DegerlendirmeEkle(degerlendirmeler, "Hurşut", 2, "Boktan yemekler!")
+);
 /*  Görev 6: 
 	Dizideki değerlendirmelerin anahtarına(key,index) bağlı olarak bir değerlendirme döndüren bir fonksiyon yazın
 	
@@ -156,7 +164,7 @@ function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim) {
 function AnahtardanDegerlendirmeAl(yorumlar, index) {
   return `${yorumlar[index].isim} isimli kişi ${yorumlar[index].puan} puan verdi ve şunları yazdı: ${yorumlar[index].geribildirim}`;
 }
-console.log(AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
+console.log("Görev 6 :", AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
 /*  Görev 7:  
 	Diziden en son değerlendirmeyi döndüren adı `SonDegerlendirmeyiAl` olan bir fonksiyon yazın 
 	
@@ -195,9 +203,19 @@ console.log(SonDegerlendirmeyiAl(degerlendirmeler));
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-  /* Kodlar buraya */
+function PuanaGoreDegerlendirmeAl(degerlendirmeDizisi, puan) {
+  let temp = [];
+  for (let i = 0; i < degerlendirmeDizisi.length; i++) {
+    let puanliDizi = degerlendirmeDizisi[i].puan;
+
+    if (puanliDizi >= puan && puanliDizi <= puan + 0.99) {
+      temp.push(degerlendirmeDizisi[i]);
+    }
+  }
+  return temp;
 }
+
+console.log("Bonus 1:", PuanaGoreDegerlendirmeAl(degerlendirmeler, 4));
 
 /*  BONUS 2:    
 	UzunDegerlendirmeleriAl fonksiyonuna aşağıdakileri uygulayın:
