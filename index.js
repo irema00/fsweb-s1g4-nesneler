@@ -224,9 +224,20 @@ console.log("Bonus 1:", PuanaGoreDegerlendirmeAl(degerlendirmeler, 4));
 	
 */
 
-function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
-  /* Kodlar buraya */
+function UzunDegerlendirmeleriAl(degerlendirmelerDizisi) {
+  let uzunDegerlendirmeler = [];
+  for (let i = 0; i < degerlendirmelerDizisi.length; i++) {
+    const geribildirim = degerlendirmelerDizisi[i].geribildirim;
+    const kelimeler = geribildirim.split(" ");
+
+    if (kelimeler.length > 15) {
+      uzunDegerlendirmeler.push(degerlendirmelerDizisi[i]);
+    }
+  }
+  return uzunDegerlendirmeler;
 }
+
+console.log("Bonus 2:", UzunDegerlendirmeleriAl(degerlendirmeler));
 
 /*  BONUS 3:  
 	Bu ek görevde degerlendirmeler dizisi kullanılmayacak!  Bu görevde kendi nesnenizi yaratmanız gerekmektedir.
@@ -245,9 +256,18 @@ function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
 	Bu 110 döndürmelidir çünkü başlangıç kilometre sayacını 10 olarak tanımladık ve 100 km arabayı sürdük.
 */
 
-function arabaYapici(/* Kodlar buraya */) {
-  /* Kodlar buraya */
+function arabaYapici(baslangicKm) {
+  let araba = {
+    kilometreSayaci: baslangicKm,
+    surus: function (kmSayaciArtır) {
+      this.kilometreSayaci += kmSayaciArtır;
+      return this.kilometreSayaci;
+    },
+  };
+  return araba;
 }
+let araba1 = arabaYapici(10);
+console.log(araba1.surus(100));
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
 function sa() {
